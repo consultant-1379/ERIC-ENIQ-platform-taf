@@ -1,0 +1,1 @@
+select count(*) agg_count from Aggregation

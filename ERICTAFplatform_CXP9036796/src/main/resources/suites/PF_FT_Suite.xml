@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PF FT Suite" parallel="none">
+	<!-- Bug JIRA Suite test cases -->
+	<test name="BugJiraTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.BugJiraTest" />
+		</classes>
+	</test>
+	<test name="MonitorHeapScriptTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.MonitorHeapScriptTest" />
+		</classes>
+	</test>
+	<test name="BugJiraEQEV60256">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.BugJiraEQEV60256" />
+		</classes>
+	</test>
+	<test name="BugJiraEQEV61132">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.BugJiraEQEV61132" />
+		</classes>
+	</test>
+	<test name="BugJiraEQEV66467_TC02">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.BugJiraEQEV66467_TC02" />
+		</classes>
+	</test>
+	<test name="BugJiraEQEV57943">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.BugJiraEQEV57943" />
+		</classes>
+	</test>
+	<test name="WebserverRestartTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.WebserverRestartTest" />
+		</classes>
+	</test>
+
+
+	<!-- CLI Test Suite -->
+	<test name="ENIQ_ServerInitialInstallationTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.ENIQ_ServerInitialInstallationTest" />
+		</classes>
+	</test>
+	<test name="VerifyPlatformInstallationTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyPlatformInstallationTest" />
+		</classes>
+	</test>
+	<test name="VerifyParserInstallationTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyParserInstallationTest" />
+		</classes>
+	</test>
+	<test name="VerifyProcessManagementTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyProcessManagementTest" />
+		</classes>
+	</test>
+	<test name="VerifyPortInstallUpgradeScriptsTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyPortInstallUpgradeScriptsTest" />
+		</classes>
+	</test>
+	<test name="VerifyInstallerModuleTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyInstallerModuleTest" />
+		</classes>
+	</test>
+	<test name="VerifySchedulerCommandsTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifySchedulerCommandsTest" />
+		</classes>
+	</test>
+	<test name="CombinedViewFunctionalityTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.CombinedViewFunctionalityTest" />
+		</classes>
+	</test>
+	<test name="DeltaViewRecreation">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.DeltaViewRecreation" />
+		</classes>
+	</test>
+	<test name="epfgTool">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.epfgTool" />
+		</classes>
+	</test>
+	<test name="VerifyParsing">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyParsing" />
+		</classes>
+	</test>
+	<test name="EWM_Removal">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.EWM_Removal" />
+		</classes>
+	</test>
+	<test name="DWHMonitorFunctionality">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.DWHMonitorFunctionality" />
+		</classes>
+	</test>
+	<test name="VerifyDclipJarExtraction">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyDclipJarExtraction" />
+		</classes>
+	</test>
+	<test name="VerifyPortOSSpecificImpactsTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyPortOSSpecificImpactsTest" />
+		</classes>
+	</test>
+	<test name="DWHMonitorInstallation">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.DWHMonitorInstallation" />
+		</classes>
+	</test>
+	<test name="CertificatesRetentionForCA_SS_Test">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.CertificatesRetentionForCA_SS_Test" />
+		</classes>
+	</test>
+	<test name="HwUtilScriptsRemovedTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.HwUtilScriptsRemovedTest" />
+		</classes>
+	</test>
+	<test name="VerifyLicenseManagerTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyLicenseManagerTest" />
+		</classes>
+	</test>
+	<test name="SelfSignedValidityTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.SelfSignedValidityTest" />
+		</classes>
+	</test>
+	<test name="RuntimeModule">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.RuntimeModule" />
+		</classes>
+	</test>
+	<test name="ExtractReportPackages">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.ExtractReportPackages" />
+		</classes>
+	</test>
+	<test name="RHELOSScriptsMaintenanceTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.RHELOSScriptsMaintenanceTest" />
+		</classes>
+	</test>
+	<test name="EniqsComplianceTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.EniqsComplianceTest" />
+		</classes>
+	</test>
+	<test name="VerifyKeystorePasswordTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyKeystorePasswordTest" />
+		</classes>
+	</test>
+	<test name="PF_SecuritySelfAssessmentTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.PF_SecuritySelfAssessmentTest" />
+		</classes>
+	</test>
+	<test name="VerifyEngineInstallationTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.VerifyEngineInstallationTest" />
+		</classes>
+	</test>
+	<test name="AlarmPwdVerification">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.AlarmPwdVerification" />
+		</classes>
+	</test>
+	<test name="EQEV_54344_EWMremoval_Test">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.EQEV_54344_EWMremoval_Test" />
+		</classes>
+	</test>
+	<test name="EQEV54344_EWM_removal_01">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.EQEV54344_EWM_removal_01" />
+		</classes>
+	</test>
+	<test name="EQEV54344_EWM_removal_02">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.EQEV54344_EWM_removal_02" />
+		</classes>
+	</test>
+	<test name="RetrievePasswordTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.RetrievePasswordTest" />
+		</classes>
+	</test>
+	<test name="SecurityFeaturesTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.platform.SecurityFeaturesTest" />
+		</classes>
+	</test>
+
+
+</suite>

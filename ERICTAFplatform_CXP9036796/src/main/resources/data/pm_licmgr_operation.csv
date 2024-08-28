@@ -1,0 +1,6 @@
+testCaseId,No,operations
+EQEV-50686_Lic_Mgr_09,1,-start
+EQEV-50686_Lic_Mgr_09,2,-stop
+EQEV-50686_Lic_Mgr_09,3,-serverstatus
+EQEV-50686_Lic_Mgr_09,4,-restart
+EQEV-50686_Lic_Mgr_09,5,-status

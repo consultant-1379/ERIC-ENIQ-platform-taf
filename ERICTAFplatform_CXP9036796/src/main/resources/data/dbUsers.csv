@@ -1,0 +1,3 @@
+testCaseId,moduleNo,dbUsers,expected
+EQEV-68105_TC03,1,dcpublic,"The password for DCPUBLIC user has been successfully changed"
+EQEV-68105_TC03,2,dba,"The password for DBA user has been successfully changed"

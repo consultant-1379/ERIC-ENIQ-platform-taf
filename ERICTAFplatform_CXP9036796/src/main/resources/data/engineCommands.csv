@@ -1,0 +1,14 @@
+testCaseId,No,commands
+EQEV-50502_engine_11,1,status
+EQEV-50502_engine_11,2,reloadConfig
+EQEV-50502_engine_11,3,reloadAggregationCache
+EQEV-50502_engine_11,4,reloadProfiles
+EQEV-50502_engine_11,5,reloadAlarmCache
+EQEV-50502_engine_11,6,reloadBackupCache
+EQEV-50502_engine_11,7,triggerRestoreOfData
+EQEV-50502_engine_11,8,loggingStatus
+EQEV-50502_engine_11,9,changeProfile Normal
+EQEV-50502_engine_11,10,showSetsInQueue
+EQEV-50502_engine_11,11,showSetsInExecutionSlots
+EQEV-50502_engine_11,12,showActiveInterfaces
+EQEV-50502_engine_11,13,getCurrentProfile

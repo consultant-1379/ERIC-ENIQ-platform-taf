@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="GUI Suit" parallel="none">
+	<!-- <test name="AdminUILoginTest"> -->
+		<!-- <classes> -->
+			<!-- <class name="com.ericsson.eniq.taf.gui.testcases.AdminUILoginTest" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="VerifyHelpLinks"> -->
+		<!-- <classes> -->
+			<!-- <class name="com.ericsson.eniq.taf.gui.testcases.VerifyHelpLinks" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="AdminUILinksTest"> -->
+		<!-- <classes> -->
+			<!-- <class name="com.ericsson.eniq.taf.gui.testcases.AdminUILinksTest" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+<!--  	<test name="AdminUI"> -->
+		<!-- <classes> -->
+			<!-- <class name="com.ericsson.eniq.taf.gui.testcases.AdminUI" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="EQEV_50504_AdminUI"> -->
+		<!-- <classes> -->
+			<!-- <class name="com.ericsson.eniq.taf.gui.testcases.EQEV_50504_AdminUI" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="EQEV54344_EWM_removal_12"> -->
+		<!-- <classes> -->
+			<!-- <class name="com.ericsson.eniq.taf.gui.testcases.EQEV54344_EWM_removal_12" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="EQEV65501_UserManual"> -->
+		<!-- <classes> -->
+			<!-- <class name="com.ericsson.eniq.taf.gui.testcases.EQEV65501_UserManual" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="TriggerSetInAdminUITest"> -->
+		<!-- <classes> -->
+			<!-- <class name="com.ericsson.eniq.taf.gui.testcases.TriggerSetInAdminUITest" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="VerifyLicensingAdminUiTest"> -->
+		<!-- <classes> -->
+			<!-- <class -->
+				<!-- name="com.ericsson.eniq.taf.gui.testcases.VerifyLicensingAdminUiTest" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="VerifyInstalledModules"> -->
+		<!-- <classes> -->
+			<!-- <class name="com.ericsson.eniq.taf.gui.testcases.VerifyInstalledModules" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="CheckFailedETLSets"> -->
+		<!-- <classes> -->
+			<!-- <class name="com.ericsson.eniq.taf.gui.testcases.CheckFailedETLSets" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+		<!-- <test name="CustomizedDBusersTest"> -->
+		<!-- <classes> -->
+			<!-- <class -->
+				<!-- name="com.ericsson.eniq.taf.gui.testcases.CustomizedDBusersTest" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="AdminUiRunningServicesTest"> -->
+		<!-- <classes> -->
+			<!-- <class -->
+				<!-- name="com.ericsson.eniq.taf.gui.testcases.AdminUiRunningServicesTest" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="LicenseServerManagerGreenColor"> -->
+		<!-- <classes> -->
+			<!-- <class -->
+				<!-- name="com.ericsson.eniq.taf.gui.testcases.LicenseServerManagerGreenColor" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+	<!-- <test name="AdminUISpecialCharacterTest"> -->
+		<!-- <classes> -->
+			<!-- <class -->
+				<!-- name="com.ericsson.eniq.taf.gui.testcases.AdminUISpecialCharacterTest" /> -->
+		<!-- </classes> -->
+	<!-- </test> -->
+</suite>

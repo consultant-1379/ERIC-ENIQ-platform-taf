@@ -1,0 +1,8 @@
+testCaseId,moduleNo,eachDbUsers
+EQEV-68105,1,etlrep
+EQEV-68105,2,dwhrep
+EQEV-68105,3,dc
+EQEV-68105,4,dba
+EQEV-68105,5,dcbo
+EQEV-68105,6,dcpublic
+EQEV-68105,7,dcuser

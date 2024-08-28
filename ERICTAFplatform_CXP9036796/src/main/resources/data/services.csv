@@ -1,0 +1,10 @@
+testCaseId,No,service
+EQEV-50465_Install_Parsers_03,1,eniq-connectd
+EQEV-50465_Install_Parsers_03,3,eniq-dwhdb
+EQEV-50465_Install_Parsers_04,4,eniq-engine
+EQEV-50465_Install_Parsers_05,5,eniq-esm
+EQEV-50465_Install_Parsers_07,6,eniq-licmgr
+EQEV-50465_Install_Parsers_07,7,eniq-lwphelper
+EQEV-50465_Install_Parsers_07,8,eniq-repdb
+EQEV-50465_Install_Parsers_07,9,eniq-scheduler
+EQEV-50465_Install_Parsers_07,10,eniq-webserver

@@ -1,0 +1,30 @@
+testCaseId,moduleNo,links,title
+Verify_help_links,1,System Status,Checking System Status
+Verify_help_links,2,ETLC Monitoring,AdminUI
+Verify_help_links,3,ETLC Set History,AdminUI
+Verify_help_links,4,ETLC Set Scheduling,AdminUI
+Verify_help_links,5,Monitoring Commands,Checking Installed Tech Packs
+Verify_help_links,6,Eniq Monitoring Services,ENIQ Monitoring Services
+Verify_help_links,7,TechPack Installation,Tech Pack Installation Information
+Verify_help_links,8,System Status,Checking System Status
+Verify_help_links,9,Pre Check,Pre Check
+Verify_help_links,10,Update Features,Update Features
+Verify_help_links,11,Install Features,Install Features
+Verify_help_links,12,Report Extraction,Report Extraction
+Verify_help_links,13,Show Loadings,Monitoring Data Flow
+Verify_help_links,14,Show Aggregations,Checking Aggregation Status
+Verify_help_links,15,Reaggregation,Reaggregating Data
+Verify_help_links,16,Session Logs,Session Logging
+Verify_help_links,17,Data Row Info,Checking Data Row Information
+Verify_help_links,18,Data Row Summary,Checking Data Row Summary
+Verify_help_links,19,Show Reference Tables,Checking Reference Table Data
+Verify_help_links,20,Busy Hour Information,Checking Busy Hour Information
+Verify_help_links,21,RANKBH Information,Checking RANKBH Information
+Verify_help_links,22,Monitoring Rules,AdminUI
+Verify_help_links,23,Monitored Types,AdminUI
+Verify_help_links,24,Type Configuration,Checking Partition Status
+Verify_help_links,25,DWH Configuration,Adjusting Partition Plans
+Verify_help_links,26,Logging Configuration,ETLC Logging
+Verify_help_links,27,Polling Start Time,Configuring Polling Start Time
+Verify_help_links,28,EBS Upgrader,Using EBS Upgrader
+Verify_help_links,29,Busy Hour Configuration,Busy Hour Configuration

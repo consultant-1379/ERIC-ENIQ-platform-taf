@@ -1,0 +1,86 @@
+package com.ericsson.eniq.taf.installation.test.steps;
+
+import static org.testng.Assert.assertTrue;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+
+import org.apache.commons.configuration.PropertiesConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.ericsson.cifwk.taf.annotations.TestStep;
+import com.ericsson.cifwk.taf.data.DataHandler;
+import com.ericsson.cifwk.taf.utils.FileFinder;
+import com.ericsson.eniq.taf.installation.test.operators.GeneralOperator;
+
+
+/**
+ * @author ZJSOLEA
+ */
+public class EQEV68105_TC01_Steps {
+	private static Logger logger = LoggerFactory.getLogger(EQEV68105_TC01_Steps.class);	
+	private static final String NEW_PASSWORD="Password@123";
+
+	@Inject
+	private Provider<GeneralOperator> provider;
+	
+	/**
+	 * @throws Exception 
+	 * @DESCRIPTION change the password of database user dc
+	 */
+	@TestStep(id = StepIds.EQEV68105_TC01_STEP01)
+	public void verify() throws Exception {
+		/* NOTE!!!
+		 * This test case must be run in the end of the suite as it changes the
+		 * default password and other test cases might be depend on the default password.
+		 */
+		
+		// get operators from providers
+		final GeneralOperator operator = provider.get();
+		
+		try {
+			logger.info("Getting current dc password");
+			String output = operator.executeCommandDcuser("cd /eniq/sw/installer/; ./getPassword.bsh -u dc | grep \"DC password:\"");
+			assertTrue(!output.isEmpty(), "Unable to retrieve current password for dc using script /eniq/sw/installer/getPassword.bsh");
+			String currentPassword = output.split(":")[1].trim();
+			logger.info("Retrieved current password : " + currentPassword);
+			
+			logger.info("Stopping all eniq services");
+			output = operator.executeCommand("echo Yes | bash /eniq/admin/bin/manage_deployment_services.bsh -a stop -s ALL");
+			assertTrue(output.contains("ENIQ services stopped correctly"), "Unable to stop all eniq services :\n" + output);
+			logger.info("Stopped all services");
+			
+			logger.info("Starting dwhdb and repdb services");
+			output = operator.executeCommand("echo Yes | bash /eniq/admin/bin/manage_eniq_services.bsh -a start -s dwhdb,repdb");
+			assertTrue(output.contains("ENIQ services started correctly"), "Unable to start dwhdb and repdb services : " + output);
+			logger.info("Started dwhdb and repdb services");
+			
+			logger.info("Changing password");
+			String newpswd = NEW_PASSWORD;
+			logger.info("Changing password to '" + newpswd + "'");
+			output = operator.executeCommand("echo -e \"" + currentPassword + "\\n" + newpswd + "\\n" + newpswd + "\\nYes\" | bash /eniq/admin/bin/change_db_password.bsh -u dc");
+			assertTrue(output.contains("PASSWORD CHANGE SUCCESSFUL"), "Password change is not successful : \n" + output);
+			logger.info("Password changed");
+		
+			logger.info("Changing db password in properties");
+			PropertiesConfiguration update = new PropertiesConfiguration(FileFinder.findFile("db.properties").get(0));
+			update.setProperty("eniq.dwhrep.db.password12", newpswd);
+			update.save();			
+			DataHandler.setAttribute("eniq.dwhrep.db.password", newpswd);
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			String output = operator.executeCommand("echo Yes | bash /eniq/admin/bin/manage_deployment_services.bsh -a start -s ALL");
+			assertTrue(output.contains("ENIQ services started correctly on eniqs"), "Unable to start all services");
+		}
+		return;
+	}
+
+	public static class StepIds {
+		public static final String EQEV68105_TC01_STEP01 = "change the password of database user dc";
+
+		private StepIds() {
+		}
+	}
+}

@@ -1,0 +1,576 @@
+#!/bin/bash
+# ********************************************************************
+# Ericsson Radio Systems AB                                     SCRIPT
+# ********************************************************************
+#
+# (c) Ericsson Radio Systems AB 2015 - All rights reserved.
+#
+# The copyright to the computer program(s) herein is the property
+# of Ericsson Radio Systems AB, Sweden. The programs may be used
+# and/or copied only with the written permission from Ericsson Radio
+# Systems AB or in accordance with the terms and conditions stipulated
+# in the agreement/contract under which the program(s) have been
+# supplied.
+#
+# ********************************************************************
+# Name    : access_verification_script.bsh
+# Date    : 21/02/2018
+# Purpose : Script to verify if the user is able to access the views 
+#           
+# Usage   : access_verification_script.bsh
+#
+# ********************************************************************
+#
+# Command Section
+#
+# ********************************************************************
+
+### Function: usage_msg ###
+#
+#   Print out the usage message
+#
+# Arguments:
+#	none
+# Return Values:
+#	none
+usage()
+{
+   echo `date "+%Y-%m-%d %H:%M:%S"` "Usage: ./access_verification_script.bsh"
+}
+
+
+DATE=/usr/bin/date
+LOGDIR=/eniq/log/sw_log/engine/AccessVerifyScripts
+ADMIN_DIR=/eniq/admin/lib
+ECHO=/usr/bin/echo
+GREP=/usr/bin/grep
+MKDIR=/usr/bin/mkdir
+TOUCH=/usr/bin/touch
+CAT=/usr/bin/cat
+FIND=/usr/bin/find
+RM=/usr/bin/rm
+READ=/usr/bin/read
+CONF_DIR=/eniq/sw/conf
+
+if [ -s ${ADMIN_DIR}/common_functions.lib ]; then
+    . ${ADMIN_DIR}/common_functions.lib
+else
+        echo `date "+%Y-%m-%d %H:%M:%S"` "Could not find /eniq/admin/lib/common_functions.lib"
+        exit 1
+fi
+
+# Default user
+DEFAULT_USER=dcuser
+DBISQL="$(ls /eniq/sybase_iq/IQ-*/bin64/dbisql)"
+CURRENT_DATE="$(${DATE} +"%Y_%m_%d")"
+OKSTATUS="OK"
+ENGINE_LOG_DIR=/eniq/log/sw_log/engine/
+LOGFILE="${LOGDIR}/accesslogs_${CURRENT_DATE}.txt"
+ERRORLOG="${LOGDIR}/errorlogofviews_${CURRENT_DATE}.txt"
+DWHREPUSER=`inigetpassword REP -v DWHREPUsername -f ${CONF_DIR}/niq.ini`
+DWHREPPASSWORD=`inigetpassword REP -v DWHREPPassword -f ${CONF_DIR}/niq.ini`
+REP_PORT=`inigetpassword REP -v PortNumber -f ${CONF_DIR}/niq.ini`
+REP_SERVER_NAME=`inigetpassword REP -v ServerName -f ${CONF_DIR}/niq.ini`
+DWHDBPASSWORD=`inigetpassword DWH -v DCPassword -f ${CONF_DIR}/niq.ini`
+DWHDB_PORT=`inigetpassword DWH -v PortNumber -f ${CONF_DIR}/niq.ini`
+DWH_SERVER_NAME=`inigetpassword DWH -v ServerName -f ${CONF_DIR}/niq.ini`
+DCBO_PASSWORD=`inigetpassword DWH -v DCBOPassword -f ${CONF_DIR}/niq.ini`
+
+
+
+DELTAVIEW_FAILED_LOGFILENAME="failed_delta_views_";
+DELTAVIEW_LOGNAME="delta_view_create_"
+TYPEOFVIEW=""
+MOLIST=""
+TPLIST=""
+SEPERATOR=","
+QUOTE="'"
+DCUSER="dc"
+DCBOUSER="dcbo"
+DCPUBLICUSER="dcpublic"
+VIEWNAME=""
+GRANTEES_FOR_REQUESTED_MOS=${LOGDIR}/granteedetailsforMOS.txt
+MOS_LIST_IN_FILE=${LOGDIR}/molistinfile.txt
+GRANTEE_DETAILS=${LOGDIR}/granteesdetails.txt
+ACTIVE_TECHPACKS=${LOGDIR}/activeTechpacks.txt
+BUSYHOUR_PP_MOLIST=${LOGDIR}/busyhourPPforMOS.txt
+YES="Y"
+VERSIONID=""
+RAW_VIEW="_RAW"
+DAY_VIEW="_DAY"
+WEEK_VIEW="_WEEK"
+MONTH_VIEW="_MONTH"
+DELTA_VIEW="_DELTA"
+COUNT_VIEW="_COUNT"
+BUSY_HOUR="BH"
+TOPOLOGY_TAB="DIM"
+DAYBH="DAYBH"
+DAYBH_CALC="DAYBH_CALC"
+RANKBH="RANKBH"
+declare -a USERS=( "dcpublic" "dcbo" "dc" )
+LENGTH_USERS_LIST=${#USERS[@]}
+
+check_id()
+{
+_check_id_=`id -u -n`
+if [ "${_check_id_}" != "${DEFAULT_USER}" ]; then
+    _err_msg_="You must be ${DEFAULT_USER} to execute this script."
+    ${ECHO} $_err_msg_
+	exit 1
+fi
+} 
+
+timestamp() {
+  $ECHO `date "+%Y-%m-%d %H:%M:%S"` $1  
+}
+
+fetchGranteeDetailsAndVerify(){
+
+		TYPEOFVIEW=$1
+		$DBISQL -nogui -onerror exit -c "eng=${DWH_SERVER_NAME};links=tcpip{host=${DWH_SERVER_NAME};port=${DWHDB_PORT}};uid=dc;pwd=${DWHDBPASSWORD}" "select grantee,selectauth,ttname from SYSTABAUTH where ttname IN (${MOLIST}) ORDER BY ttname;OUTPUT TO ${GRANTEES_FOR_REQUESTED_MOS}  "
+				 
+				if [ $? -ne 0 ]; then
+					timestamp "Failed to fetch grantee details. Exiting..." >> ${ERRORLOG}
+					timestamp "Failed to fetch grantee details. Exiting..." >> ${LOGFILE}
+					cleanup
+					exit 2
+				fi
+					
+		
+					if [ -s ${GRANTEES_FOR_REQUESTED_MOS} ]; then
+					
+						   while read MOFROMFILE; do
+										MOFROMFILE=(${MOFROMFILE[@]//\'/})
+										VIEWNAME=${MOFROMFILE}${TYPEOFVIEW}
+								
+									${TOUCH} ${GRANTEE_DETAILS}
+										
+										GRANTEE_DETAILS_PER_VIEW=`${CAT} ${GRANTEES_FOR_REQUESTED_MOS} | ${GREP} -w "${VIEWNAME}" | xargs`
+												
+											if [[ -z "${GRANTEE_DETAILS_PER_VIEW}"  ]]; then
+											
+												if [[ "${TYPEOFVIEW}" == "_DELTA"  ]]; then	
+												  IS_PARTITION_TABLE_PRESENT="$($DBISQL -nogui -onerror exit -c "eng=${DWH_SERVER_NAME};links=tcpip{host=${DWH_SERVER_NAME};port=${DWHDB_PORT}};uid=dc;pwd=${DWHDBPASSWORD}"  "select count(*) from systable where table_name like '${VIEWNAME}'; " | $EGREP -v '(----|count|rows|Execution)' | $SED 's/[^0-9]*//g' | $SED '/^\s*$/d')"
+												else
+										          IS_PARTITION_TABLE_PRESENT="$($DBISQL -nogui -onerror exit -c "eng=${DWH_SERVER_NAME};links=tcpip{host=${DWH_SERVER_NAME};port=${DWHDB_PORT}};uid=dc;pwd=${DWHDBPASSWORD}"  "select count(*) from systable where table_name like '${VIEWNAME}_0%'; " | $EGREP -v '(----|count|rows|Execution)' | $SED 's/[^0-9]*//g' | $SED '/^\s*$/d')"
+												fi  
+												
+												if [ $? -ne 0 ]; then
+													timestamp "Failed to partition table details. Exiting..." >> ${ERRORLOG}
+													cleanup
+													exit 2
+												fi
+												
+													if [[ ${IS_PARTITION_TABLE_PRESENT} -eq 0 ]]; then
+														timestamp "VIEW: ${VIEWNAME} Partition tables and view does not exist" >> $ERRORLOG
+													else
+														if [[ "${TYPEOFVIEW}" == "_DELTA"  ]]; then	
+															timestamp "VIEW: ${VIEWNAME} physically exists where as details are not available in SYSTABAUTH" >> $ERRORLOG
+														else
+														   timestamp "VIEW: ${VIEWNAME} is not available but Partition tables exist" >> $ERRORLOG
+														fi
+													fi
+											else
+												IFS=$"\n " read -ra DETAILS <<< "$GRANTEE_DETAILS_PER_VIEW"
+													for USERDETAILS in "${DETAILS[@]}"; do	
+														$ECHO ${USERDETAILS} >> ${GRANTEE_DETAILS}
+													 done
+												
+												
+											   for (( i=0;i<${LENGTH_USERS_LIST};i++)); do
+												   USER=${USERS[${i}]}						   
+													USEREXISTS=`${CAT} ${GRANTEE_DETAILS} | ${GREP} -w "${USER}"  | xargs`
+
+														if [[ "${USEREXISTS}" != "" && "${USEREXISTS}" != " " ]]; then
+															
+															IFS="," read -ra eachGRANTEE <<< "${USEREXISTS}"
+															GRANTEE_NAME=${eachGRANTEE[0]}
+															SELECT_AUTH=${eachGRANTEE[1]}
+															TABLE_NAME=${eachGRANTEE[2]}
+															
+															
+															if [[ "${SELECT_AUTH}" == "${YES}" ]]; then  
+																timestamp "VIEW: ${VIEWNAME} - ${GRANTEE_NAME} user has Select authentication" >> $LOGFILE
+															else    
+																timestamp "VIEW: ${VIEWNAME} - ${GRANTEE_NAME} user does not have Select authentication" >> $ERRORLOG
+															fi
+														else
+															
+															if [[ "${VIEWNAME}" == *"${DELTA_VIEW}" && "${USER}" == "${DCUSER}" ]]; then
+																continue
+															elif [[ "${VIEWNAME}" == *"${DAYBH_CALC}" && "${USER}" == "${DCBOUSER}" || "${USER}" == "${DCPUBLICUSER}" ]]; then
+																continue
+															else
+																timestamp "VIEW: ${VIEWNAME} is not available for User: $USER" >> $ERRORLOG
+															fi
+														fi
+												done
+												
+												${RM} ${GRANTEE_DETAILS}
+											fi
+									
+							done < ${MOS_LIST_IN_FILE}
+					else
+						timestamp "views do not exist for all MO's for viewtype ${TYPEOFVIEW}" >> $ERRORLOG
+					fi
+}
+
+prepareMOList(){
+	TYPEOFVIEW=$1
+	CATEGORYOFVIEW=$2
+	if [ -s ${MOS_LIST_IN_FILE} ]; then
+		while read MO; do
+			MO=(${MO[@]//\'/})
+				if [[ -z "${MOLIST}" ]]; then
+					MOLIST=${QUOTE}${MO}${TYPEOFVIEW}${QUOTE}
+				else
+					MOLIST=${MOLIST}${SEPERATOR}${QUOTE}${MO}${TYPEOFVIEW}${QUOTE}
+				fi
+			
+		done < ${MOS_LIST_IN_FILE}
+		if [[ -z "${MOLIST}" ]]; then
+			timestamp "Error creating MO list for ${CATEGORYOFVIEW}" >> $ERRORLOG
+		else
+			fetchGranteeDetailsAndVerify "${TYPEOFVIEW}"
+		fi
+		
+	else
+		timestamp "No MO's available for ${CATEGORYOFVIEW} TABLES" >> $ERRORLOG
+	fi
+}
+
+cleanup(){
+	${RM} -f ${ACTIVE_TECHPACKS}
+	${RM} -f ${MOS_LIST_IN_FILE}
+	${RM} -f ${GRANTEES_FOR_REQUESTED_MOS}
+	${RM} -f ${BUSYHOUR_PP_MOLIST}
+}
+
+delta_views(){
+##############-----------------VERIFY DELTA VIEWS AND COUNT VIEWS-------------------####################
+timestamp "Extracting MO's for Delta Views"  >> $LOGFILE	
+FAILED_DELTA_MOS=""
+	
+	DELTAVIEWLOGFILE=`ls -t1 ${ENGINE_LOG_DIR}| grep "${DELTAVIEW_LOGNAME}" | head -n 1`
+	
+	if [[ -z ${DELTAVIEWLOGFILE} ]]; then
+		timestamp "Delta view creation script is not executed. Hence skipping authentication check for delta and count views." >> $ERRORLOG
+	else		
+		 $DBISQL -nogui -onerror exit -c "eng=${REP_SERVER_NAME};links=tcpip{host=${REP_SERVER_NAME};port=${REP_PORT}};uid=${DWHREPUSER};pwd=${DWHREPPASSWORD}" "select DISTINCT OBJECTNAME from MeasurementType where DELTACALCSUPPORT=1 and OBJECTNAME not like '%${BUSY_HOUR}' ORDER BY OBJECTNAME;OUTPUT TO ${MOS_LIST_IN_FILE}"
+			if [ $? -ne 0 ]; then
+					timestamp "Failed to fetch MO details for delta and count views. Exiting..." >> $ERRORLOG
+					timestamp "Failed to fetch MO details for delta and count views. Exiting..." >> $LOGFILE
+					cleanup
+					exit 2
+			fi
+	
+		if [ -s ${MOS_LIST_IN_FILE} ]; then
+			echo $DELTAVIEWLOGFILE
+			IFS="_" read -ra FETCHDATE <<< "${DELTAVIEWLOGFILE}"
+			DATE=${FETCHDATE[3]}
+			FAILED_LOGFILE=`ls -t1 ${ENGINE_LOG_DIR} | grep "${DELTAVIEW_FAILED_LOGFILENAME}${DATE}" | head -n 1`
+				if [[ -z ${FAILED_LOGFILE} ]]; then 
+					timestamp "Failed log file of delta view is not available" >> $LOGFILE
+				else
+					while read MO; do
+						MO=(${MO[@]//\'/})
+						IS_MO_IN_FAILED_LOGFILE=`${CAT} /eniq/log/sw_log/engine/${FAILED_LOGFILE} | ${GREP} "${MO}*" | wc -l`
+						MO_IN_LOG=`echo ${IS_MO_IN_FAILED_LOGFILE} | xargs`
+						
+						if [[ ${MO_IN_LOG} > 0 ]]; then 
+						
+							if [[ -z "${FAILED_DELTA_MOS}" ]]; then
+								FAILED_DELTA_MOS=${MO}
+							else
+								FAILED_DELTA_MOS=${FAILED_DELTA_MOS}":"${MO}
+							fi							
+							timestamp "MO:${MO} delta and count view has failed during execution of delta view script. Hence skipping it's check for select authentication in database." >> ${ERRORLOG}		
+		
+						fi	
+					done < ${MOS_LIST_IN_FILE}
+					
+					echo $FAILED_DELTA_MOS
+					timestamp "Removing failed delta view MO's"
+					IFS=":" read -ra DELTA_MO <<< "${FAILED_DELTA_MOS}"
+						for MO_F in "${DELTA_MO[@]}"; do
+						echo "mo f is: $MO_F"
+							${TOUCH} ${LOGDIR}/tmpfile.txt
+							chmod 777 ${MOS_LIST_IN_FILE}
+							cp ${MOS_LIST_IN_FILE} ${LOGDIR}/tmpfile.txt
+							grep -v -w "'${MO_F}'" ${LOGDIR}/tmpfile.txt > ${MOS_LIST_IN_FILE}
+							${RM} ${LOGDIR}/tmpfile.txt
+					    done					
+				fi			
+			
+			CATEGORY="DELTA"
+			prepareMOList "${DELTA_VIEW}" "${CATEGORY}"
+			timestamp "Verification of delta views completed" >> $LOGFILE		
+			
+			##--COUNT_VIEW--##
+			CATEGORY="COUNT"
+			prepareMOList "${COUNT_VIEW}" "${CATEGORY}"
+			timestamp "Verification of count views completed" >> $LOGFILE
+		else
+			timestamp "No MO's available for Deltaview and Countview" >> $ERRORLOG
+		fi
+	fi
+}
+	
+static_views(){
+##############-----------------VERIFY STATIC TABLES-------------------####################
+	MOLIST=""	
+	
+	timestamp "Extracting MO's for Static Views"  >> $LOGFILE
+	
+    $DBISQL -nogui -onerror exit -c "eng=${REP_SERVER_NAME};links=tcpip{host=${REP_SERVER_NAME};port=${REP_PORT}};uid=${DWHREPUSER};pwd=${DWHREPPASSWORD}" "select TABLENAME from DWHPartition where TABLENAME like '%DIM%[_]V[_]%' and TABLENAME not like '%${BUSY_HOUR}' ORDER BY TABLENAME;OUTPUT TO ${MOS_LIST_IN_FILE}"
+	
+				if [ $? -ne 0 ]; then
+					timestamp "Failed to fetch MO details for static views. Exiting..." >> $ERRORLOG
+					timestamp "Failed to fetch MO details for static views. Exiting..." >> $LOGFILE
+					cleanup
+					exit 2
+				fi
+				
+		MOLIST=""
+		TYPEOFVIEW=""
+		CATEGORY="STATIC"
+		prepareMOList "${TYPEOFVIEW}" "${CATEGORY}"
+		
+		timestamp "Verification of static views completed" >> $LOGFILE
+}	
+		
+topology_views(){		
+##############-----------------VERIFY TOPOLOGY TABLES-------------------####################
+	MOLIST=""	
+	
+	timestamp "Extracting MO's for TOPOLOGY Views"  >> $LOGFILE
+	
+    $DBISQL -nogui -onerror exit -c "eng=${REP_SERVER_NAME};links=tcpip{host=${REP_SERVER_NAME};port=${REP_PORT}};uid=${DWHREPUSER};pwd=${DWHREPPASSWORD}" "select OBJECTNAME from ReferenceTable WHERE OBJECTNAME like 'DIM%' and OBJECTNAME not like '%${BUSY_HOUR}' ORDER BY OBJECTNAME;OUTPUT TO ${MOS_LIST_IN_FILE}"
+	
+				if [ $? -ne 0 ]; then
+					timestamp "Failed to fetch MO details for topology tables. Exiting..." >> $ERRORLOG
+					timestamp "Failed to fetch MO details for topology tables. Exiting..." >> $LOGFILE
+					cleanup
+					exit 2
+				fi
+	
+	TYPEOFVIEW=""
+	CATEGORY="TOPOLOGY"
+	prepareMOList "${TYPEOFVIEW}" "${CATEGORY}"
+	timestamp "Verification of topology tables completed" >> $LOGFILE
+}
+	
+raw_and_aggregation_views(){
+##############-----------------VERIFY RAW,AGGREGATION(DAY,WEEK,MONTH)VIEWS-------------------####################
+
+timestamp "Executing verification of views for RAW,AGGREGATIONS" >> $LOGFILE
+
+$DBISQL -nogui -onerror exit -c "eng=${REP_SERVER_NAME};links=tcpip{host=${REP_SERVER_NAME};port=${REP_PORT}};uid=${DWHREPUSER};pwd=${DWHREPPASSWORD}" "select VERSIONID from TPActivation where type='PM' and STATUS='ACTIVE' ORDER BY VERSIONID ;OUTPUT TO ${ACTIVE_TECHPACKS} "
+	 
+if [ $? -ne 0 ]; then
+	timestamp "Failed to fetch Active techpack details for Raw and Aggregation views. Exiting..." >> ${ERRORLOG}
+	timestamp "Failed to fetch Active techpack details for Raw and Aggregation views. Exiting..." >> ${LOGFILE}
+	cleanup
+	exit 2
+fi
+	 
+#--get the list of TP's --#
+	if [ -s ${ACTIVE_TECHPACKS} ]; then
+		while read TP; do
+			VERSIONID=${TP}
+			VERSIONID="${VERSIONID[@]//\'/}"
+			IFS=":" read -ra TECHPACK <<< "${VERSIONID}"
+			TECHPACK_NAME=${TECHPACK[0]}
+				if [[ -z "${TPLIST}" ]]; then
+					TPLIST=${TP}
+					TPLIST_WITHOUT_VID=${QUOTE}${TECHPACK_NAME}${QUOTE}
+				else
+					TPLIST=${TPLIST}${SEPERATOR}${TP}
+					TPLIST_WITHOUT_VID=${TPLIST_WITHOUT_VID}${SEPERATOR}${QUOTE}${TECHPACK_NAME}${QUOTE}
+				fi
+		done < ${ACTIVE_TECHPACKS}
+		if [[ -z "${TPLIST}" ]]; then
+			timestamp "Error creating TP list" >> $ERRORLOG
+		else
+			timestamp "Extracting list of MO's for all ACTIVE TP's"  >> ${LOGFILE}
+			$DBISQL -nogui -onerror exit -c "eng=${REP_SERVER_NAME};links=tcpip{host=${REP_SERVER_NAME};port=${REP_PORT}};uid=${DWHREPUSER};pwd=${DWHREPPASSWORD}" "select OBJECTNAME from MeasurementType where versionid IN (${TPLIST}) and OBJECTNAME not like '%${BUSY_HOUR}' ORDER BY OBJECTNAME ;OUTPUT TO ${MOS_LIST_IN_FILE}"
+			if [ $? -ne 0 ]; then
+				timestamp "Failed to fetch MO details for Raw and Aggregation views. Exiting..." >> ${ERRORLOG}
+				timestamp "Failed to fetch MO details for Raw and Aggregation views. Exiting..." >> ${LOGFILE}
+				cleanup
+				exit 2
+			fi
+		fi
+		
+	else
+		timestamp "No ACTIVE TECHPACK's available" >> $ERRORLOG
+	fi
+#--end of TP list--#
+
+	if [ -s ${MOS_LIST_IN_FILE} ]; then
+
+		#RAW TABLES
+		CATEGORY="RAW"
+		prepareMOList "${RAW_VIEW}" "${CATEGORY}"
+		timestamp "Verification of AGGREGATION:RAW views completed" >> $LOGFILE
+		
+		#DAY AGGREGATION TABLES
+		MOLIST=""
+		CATEGORY="DAY"
+		prepareMOList "${DAY_VIEW}" "${CATEGORY}"
+		timestamp "Verification of AGGREGATION:DAY views completed" >> $LOGFILE
+		
+		#WEEK AGGREGATION VIEWS-------------------####################
+		MOLIST=""
+		CATEGORY="WEEK"
+		prepareMOList "${WEEK_VIEW}" "${CATEGORY}"
+		timestamp "Verification of AGGREGATION:WEEK views completed" >> $LOGFILE
+		
+		#MONTH AGGREGATION VIEWS-------------------####################
+		MOLIST=""
+		CATEGORY="MONTH"
+		prepareMOList "${MONTH_VIEW}" "${CATEGORY}"
+		timestamp "Verification of AGGREGATION:MONTH views completed" >> $LOGFILE
+		
+	else
+		timestamp "No MO's available for RAW and AGGREGATION views" >> $LOGFILE
+	fi
+}
+
+busyhour_views(){
+##############-----------------VERIFY BUSY HOUR VIEWS-------------------####################
+
+	MOLIST=""
+	timestamp "Extracting Busy hour MO's"  >> ${LOGFILE}
+	
+	 $DBISQL -nogui -onerror exit -c "eng=${REP_SERVER_NAME};links=tcpip{host=${REP_SERVER_NAME};port=${REP_PORT}};uid=${DWHREPUSER};pwd=${DWHREPPASSWORD}" "select TYPENAME from TypeActivation where TABLELEVEL='${DAYBH}' and TECHPACK_NAME IN (${TPLIST_WITHOUT_VID}) ORDER BY TYPENAME ;OUTPUT TO ${MOS_LIST_IN_FILE}"
+	 
+	 if [ $? -ne 0 ]; then
+		timestamp "Failed to fetch MO details for BusyHour DAYBH views. Exiting..." >> ${ERRORLOG}
+		timestamp "Failed to fetch MO details for BusyHour DAYBH views. Exiting..." >> ${LOGFILE}
+		cleanup
+		exit 2
+	fi
+	 
+	 if [ -s ${MOS_LIST_IN_FILE} ]; then
+		MOLIST=""
+		prepareMOList "_${DAYBH}" "${DAYBH}"
+		
+		MOLIST=""
+		prepareMOList "_${DAYBH_CALC}" "${DAYBH_CALC}"
+		timestamp "Verification of DAYBH views completed" >> $LOGFILE
+	 else
+		timestamp "NO DAYBH MO's" >> $LOGFILE
+	 fi 
+
+	 $DBISQL -nogui -onerror exit -c "eng=${REP_SERVER_NAME};links=tcpip{host=${REP_SERVER_NAME};port=${REP_PORT}};uid=${DWHREPUSER};pwd=${DWHREPPASSWORD}" "select TYPENAME from TypeActivation where TABLELEVEL='${RANKBH}' and TECHPACK_NAME IN (${TPLIST_WITHOUT_VID}) ORDER BY TYPENAME ;OUTPUT TO ${MOS_LIST_IN_FILE}"
+	 
+	  if [ $? -ne 0 ]; then
+		timestamp "Failed to fetch MO details for BusyHour RANKBH views. Exiting..." >> ${ERRORLOG}
+		timestamp "Failed to fetch MO details for BusyHour RANKBH views. Exiting..." >> ${LOGFILE}
+		cleanup
+		exit 2
+	fi
+	 
+	 if [ -s ${MOS_LIST_IN_FILE} ]; then
+		MOLIST=""
+		prepareMOList "_${RANKBH}" "${RANKBH}"
+		timestamp "Verification of RANKBH views completed" >> $LOGFILE
+	 else
+		timestamp "NO RANKBH MO's" >> $LOGFILE
+	 fi
+}
+
+busyhour_pp_views(){
+##############-----------------VERIFY BUSY HOUR [PP] VIEWS-------------------####################
+	MOLIST=""
+	timestamp "Extracting Busy hour PP MO's"  >> ${LOGFILE}
+	 
+	 $DBISQL -nogui -onerror exit -c "eng=${REP_SERVER_NAME};links=tcpip{host=${REP_SERVER_NAME};port=${REP_PORT}};uid=${DWHREPUSER};pwd=${DWHREPPASSWORD}" "select BHLEVEL+'_RANKBH_'+BHOBJECT+'_'+BHTYPE as Busyhour_PP from Busyhour where BHTYPE LIKE 'PP%' and ENABLE='1' and VERSIONID IN (${TPLIST}) ORDER BY BHLEVEL ;OUTPUT TO ${BUSYHOUR_PP_MOLIST}" 
+	 
+	  if [ $? -ne 0 ]; then
+		timestamp "Failed to fetch MO details for BusyHour PP views. Exiting..." >> ${ERRORLOG}
+		timestamp "Failed to fetch MO details for BusyHour PP views. Exiting..." >> ${LOGFILE}
+		cleanup
+		exit 2
+	fi
+	 
+	 if [ -s ${BUSYHOUR_PP_MOLIST} ]; then
+	 
+		 while read BUSYHOUR_PP; do 
+			BUSYHOUR_PP="${BUSYHOUR_PP[@]//\'/}"
+			timestamp "Checking Authentication for Busy hour PP : ${BUSYHOUR_PP}"
+			
+			if [ ! -z '${BUSYHOUR_PP}' -a '${BUSYHOUR_PP}'!=" " ]; then
+				#dc user
+				$DBISQL -nogui -onerror exit -c "eng=${DWH_SERVER_NAME};links=tcpip{host=${DWH_SERVER_NAME};port=${DWHDB_PORT}};uid=${DCUSER};pwd=${DWHDBPASSWORD}" "select count(*) from ${BUSYHOUR_PP} where 1=2;"
+					VALUE=$?							
+					if [[ "${VALUE}" == "0" ]]; then
+						timestamp "VIEW: ${BUSYHOUR_PP} - ${DCUSER} user has Select authentication" >> ${LOGFILE}
+					else
+						timestamp "Error accessing the VIEW: ${BUSYHOUR_PP} by ${DCUSER}" >> $ERRORLOG
+					fi
+				#dcbo user
+				$DBISQL -nogui -onerror exit -c "eng=${DWH_SERVER_NAME};links=tcpip{host=${DWH_SERVER_NAME};port=${DWHDB_PORT}};uid=${DCBOUSER};pwd=${DCBO_PASSWORD}" "select count(*) from ${DCUSER}.${BUSYHOUR_PP} where 1=2;"
+					VALUE=$?								
+					if [[ "${VALUE}" == "0" ]]; then
+						timestamp "VIEW: ${BUSYHOUR_PP} - ${DCBOUSER} user has Select authentication" >> ${LOGFILE}
+					else
+						timestamp "Error accessing the VIEW: ${BUSYHOUR_PP} by ${DCBOUSER}" >> $ERRORLOG
+					fi
+			else
+				timestamp "BUSYHOUR PP is empty" >> $ERRORLOG
+			fi
+		 done < ${BUSYHOUR_PP_MOLIST}
+	 else
+		timestamp "NO BUSYHOUR PP MO's" >> $ERRORLOG
+	 fi
+timestamp "Verification of BUSYHOUR_PP views completed" >> $LOGFILE
+}
+
+
+
+check_id
+
+${MKDIR} -p ${LOGDIR}
+${TOUCH} ${LOGFILE}
+${TOUCH} ${ERRORLOG}
+STARTTIME=`date +%s%3N`
+
+timestamp "Execution of verification of access of views....." >> $LOGFILE
+timestamp "Execution of verification of access of views....." >> $ERRORLOG
+
+DWHDB_STATUS=`dwhdb status`
+REPDB_STATUS=`repdb status`
+
+if [[ "$REPDB_STATUS" == *"$OKSTATUS"* ]]; then
+	timestamp "REPDB is online" >> $LOGFILE
+else	
+	timestamp "REPDB is not online" >> $ERRORLOG
+	exit 1
+fi
+
+if [[ "$DWHDB_STATUS" == *"$OKSTATUS"* ]]; then
+	timestamp "DWHDB is online" >> $LOGFILE
+else	
+	timestamp "DWHDB is not online" >> $ERRORLOG
+	exit 1
+fi
+
+bash /eniq/sw/installer/recompile_invalid_views.bsh -l $LOGFILE
+
+delta_views
+static_views
+topology_views
+raw_and_aggregation_views
+busyhour_views
+busyhour_pp_views
+
+bash /eniq/sw/installer/recompile_invalid_views.bsh -l $LOGFILE
+
+cleanup
+
+ENDTIME=`date +%s%3N`
+TIMECONSUMED=`expr ${ENDTIME} - ${STARTTIME}`
+TIMEINMIN=`expr ${TIMECONSUMED} / 60000`
+timestamp "Verification of views took ${TIMEINMIN} minutes....." >> $LOGFILE

@@ -1,0 +1,1 @@
+select ${column} from ${table} where moid like '${moid}' order by date_id desc;

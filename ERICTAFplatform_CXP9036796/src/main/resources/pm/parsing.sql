@@ -1,0 +1,1 @@
+SELECT Name,HOLD_FLAG FROM META_SCHEDULINGS WHERE Name like '%TriggerAdapter%' and HOLD_FLAG like '%Y%'

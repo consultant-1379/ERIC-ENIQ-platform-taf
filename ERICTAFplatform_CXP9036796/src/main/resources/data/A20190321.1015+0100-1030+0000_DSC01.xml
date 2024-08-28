@@ -1,0 +1,1131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="MeasDataCollection.xsl"?>
+<measCollecFile xmlns="http://www.3gpp.org/ftp/specs/archive/32_series/32.435#measCollec">
+	<fileHeader fileFormatVersion="32.435 V10.0" vendorName="Ericsson">
+		<fileSender localDn="ManagedElement=DSC01"/>
+		<measCollec beginTime="2019-03-21T10:15:00Z"/>
+	</fileHeader>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscPeerGroup">
+ 			<job jobId="job1"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_OUT_REQ_PEER_GROUP_TAGGED_HIGH</measType>
+			<measType p="2">CC_OUT_REQ_PEER_GROUP_LOOP_PREVENTED</measType>
+			<measType p="3">CC_OUT_REQ_PEER_GROUP_UNABLE_TO_DELIVER</measType>
+			<measType p="4">CC_OUT_REQ_PEER_GROUP_TAGGED_LOW</measType>
+			<measType p="5">CC_OUT_REQ_PEER_GROUP_TAGGED_MEDIUM</measType>
+			<measType p="6">CC_OUT_REQ_PEER_GROUP_REJECTED_LOW</measType>
+			<measType p="7">CC_OUT_REQ_PEER_GROUP_THROTTLING_REJECTED</measType>
+			<measType p="8">CC_OUT_REQ_PEER_GROUP_REJECTED_HIGH</measType>
+			<measType p="9">CC_OUT_REQ_PEER_GROUP_REJECTED_MEDIUM</measType>
+			<measType p="10">CC_OUT_REQ_PEER_GROUP_FAILOVER</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscPeerGroups=1,DscPeerGroup=1">
+				<r p="1">63</r>
+				<r p="2">65</r>
+				<r p="3">78</r>
+				<r p="4">60</r>
+				<r p="5">24</r>
+				<r p="6">50</r>
+				<r p="7">73</r>
+				<r p="8">35</r>
+				<r p="9">65</r>
+				<r p="10">7</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DbsMDPC">
+ 			<job jobId="job2"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">VS.DBS.DirtyCache.ContainerMDP.Successful</measType>
+			<measType p="2">VS.DBS.DirtyCache.ContainerMDP.Calls</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DbsMDPC=1">
+				<r p="1">4</r>
+				<r p="2">16</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscMate">
+ 			<job jobId="job3"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_IN_REQ_FORWARDED</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DscMate=1">
+				<r p="1">0</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscDmiFcMeas">
+ 			<job jobId="job4"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_DMI_FC_MEASUREMENT</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscFlexCounterProfile=1,DscDmiFcMeas=1,DscDmiFcMeas=1">
+				<r p="1">50</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="OSProcessingSocketUnit">
+ 			<job jobId="job5"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CPULoad.IOWait</measType>
+			<measType p="2">CPULoad.IRQ</measType>
+			<measType p="3">CPULoad.Nice</measType>
+			<measType p="4">CPULoad.SoftIRQ</measType>
+			<measType p="5">CPULoad.Steal</measType>
+			<measType p="6">CPULoad.System</measType>
+			<measType p="7">CPULoad.Total</measType>
+			<measType p="8">CPULoad.TotalVirt</measType>
+			<measType p="9">CPULoad.User</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,OsProcessingSocketUnit=1">
+				<r p="1">7</r>
+				<r p="2">14</r>
+				<r p="3">27</r>
+				<r p="4">11</r>
+				<r p="5">99</r>
+				<r p="6">60</r>
+				<r p="7">35</r>
+				<r p="8">34</r>
+				<r p="9">49</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscNode">
+ 			<job jobId="job6"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">GC_DSC_NUM_OF_SESSION_INSTANCES</measType>
+			<measType p="2">GC_DSC_LOAD_CPU</measType>
+			<measType p="3">GC_DSC_NUM_OF_MSISDN_INSTANCES</measType>
+			<measType p="4">CC_IN_REQ_LOCAL_ID_CHECKS_REJECTED</measType>
+			<measType p="5">CC_NUM_OF_GENERATED_ANS_DROPPED</measType>
+			<measType p="6">CC_INTERNAL_REASONS_NUM_OF_REQ_DROPPED</measType>
+			<measType p="7">GC_DSC_NUM_OF_BINDING_INSTANCES</measType>
+			<measType p="8">CC_INTERNAL_REASONS_NUM_OF_MSGS_REJECTED</measType>
+			<measType p="9">CC_OUT_ANS_NUM_OF_MSGS_DROPPED</measType>
+			<measType p="10">CC_ROUTING_NUM_OF_ICP_MSGS_DROPPED</measType>
+			<measType p="11">CC_OUT_REQ_LOCAL_ID_CHECKS_REJECTED</measType>
+			<measType p="12">CC_IN_REQ_NUM_OF_MSGS_REJECTED</measType>
+			<measType p="13">CC_INTERNAL_REASONS_NUM_OF_ANS_DROPPED</measType>
+			<measType p="14">GC_ALARM_LOG_ENTRY_LIFESPAN</measType>
+			<measType p="15">GC_DSC_NUM_OF_PRIVATEID_INSTANCES</measType>
+			<measType p="16">GC_DSC_LOAD_DB</measType>
+			<measType p="17">GC_DSC_LOAD</measType>
+			<measType p="18">GC_DSC_NUM_OF_IMSI_INSTANCES</measType>
+			<measType p="19">CC_IN_REQ_NUM_OF_MSGS_DROPPED</measType>
+			<measType p="20">CC_IN_REQ_CAPACITY_LICENSE_REJECTED</measType>
+			<measType p="21">GC_DSC_NUM_OF_PUBLICID_INSTANCES</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1">
+				<r p="1">40</r>
+				<r p="2">10</r>
+				<r p="3">84</r>
+				<r p="4">4</r>
+				<r p="5">95</r>
+				<r p="6">23</r>
+				<r p="7">53</r>
+				<r p="8">92</r>
+				<r p="9">56</r>
+				<r p="10">72</r>
+				<r p="11">72</r>
+				<r p="12">28</r>
+				<r p="13">66</r>
+				<r p="14">44</r>
+				<r p="15">28</r>
+				<r p="16">94</r>
+				<r p="17">72</r>
+				<r p="18">88</r>
+				<r p="19">92</r>
+				<r p="20">13</r>
+				<r p="21">28</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscFlexCounterProfile">
+ 			<job jobId="job7"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_DMI_FC_SUSPENDED_LOAD_REGULATION</measType>
+			<measType p="2">CC_DMI_FC_REQ_FAILED_AVP_READ</measType>
+			<measType p="3">CC_DMI_FC_OUT_OF_RESOURCES</measType>
+			<measType p="4">CC_DMI_FC_ANS_FAILED_AVP_READ</measType>
+			<measType p="5">CC_DMI_FC_INVOKED</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscFlexCounterProfile=1,DscFlexCounterProfile=1">
+				<r p="1">53</r>
+				<r p="2">95</r>
+				<r p="3">82</r>
+				<r p="4">42</r>
+				<r p="5">19</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscPeerReference">
+ 			<job jobId="job8"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">GC_PEER_GROUP_MEMBER_BLOCKED</measType>
+			<measType p="2">CC_IN_ANS_TRIG_PEER_GROUP_RESELECTION</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscPeerReference=1,DscPeerReference=1">
+				<r p="1">57</r>
+				<r p="2">52</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscTopologyHidingProfile">
+ 			<job jobId="job9"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_DMI_TH_NUM_OF_ANS_DROPPED</measType>
+			<measType p="2">CC_DMI_TH_DESCR_EXPRESSION_NOT_MATCHED</measType>
+			<measType p="3">CC_DMI_TH_NUM_OF_REQ_DROPPED</measType>
+			<measType p="4">CC_DMI_TH_SCR_FAILED_AVP_READ_REQ</measType>
+			<measType p="5">CC_DMI_TH_INVOKED</measType>
+			<measType p="6">CC_DMI_TH_DESCR_FAILED_AVP_READ_REQ</measType>
+			<measType p="7">CC_DMI_TH_SCR_EXPRESSION_NOT_MATCHED</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscDmiOperations=1,DscTopologyHidingProfiles=1,DscTopologyHidingProfile=1">
+				<r p="1">3</r>
+				<r p="2">77</r>
+				<r p="3">44</r>
+				<r p="4">36</r>
+				<r p="5">83</r>
+				<r p="6">19</r>
+				<r p="7">91</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscMsgScreeningProfile">
+ 			<job jobId="job10"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_DMI_MS_NUM_OF_ANS_DROPPED</measType>
+			<measType p="2">CC_DMI_MS_NUM_OF_REQ_DROPPED</measType>
+			<measType p="3">CC_DMI_MS_ANS_FAILED_AVP_READ</measType>
+			<measType p="4">CC_DMI_MS_NUM_OF_REQ_REJECTED</measType>
+			<measType p="5">CC_DMI_MS_REQ_FAILED_AVP_READ</measType>
+			<measType p="6">CC_DMI_MS_INVOKED</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscDmiOperations=1,DscMsgScreeningProfiles=1,DscMsgScreeningProfile=1">
+				<r p="1">47</r>
+				<r p="2">50</r>
+				<r p="3">30</r>
+				<r p="4">22</r>
+				<r p="5">28</r>
+				<r p="6">79</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscRemotePeer">
+ 			<job jobId="job11"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_IN_REQ_INVALID_HDR_BITS</measType>
+			<measType p="2">CC_OUT_ANS_HX_BD_TERMINATE_UNSUCC</measType>
+			<measType p="3">CC_OUT_REQ_HX_BD_VERIFY</measType>
+			<measType p="4">CC_IN_ANS_HX_BD_TERMINATE_SUCC</measType>
+			<measType p="5">GC_PEER_AVG_RTT</measType>
+			<measType p="6">CC_IN_REQ_HX_BD_TERMINATE</measType>
+			<measType p="7">CC_IN_REQ_HX</measType>
+			<measType p="8">CC_ROUTING_MSG_REJECTED</measType>
+			<measType p="9">CC_IN_ANS_NUM_OF_MSGS_EBIT_SET</measType>
+			<measType p="10">CC_OUT_ANS_HX</measType>
+			<measType p="11">CC_IN_ANS_HX_ERROR</measType>
+			<measType p="12">CC_OUT_REQ_REJECTED_LOW</measType>
+			<measType p="13">CC_OUT_REQ_FAILOVER</measType>
+			<measType p="14">CC_IN_ANS_HX_BD_VERIFY_SUCC</measType>
+			<measType p="15">CC_IN_ANS_HX</measType>
+			<measType p="16">CC_OUT_REQ_HX_BD_INITIALIZE</measType>
+			<measType p="17">CC_OUT_REQ_TAGGED_HIGH</measType>
+			<measType p="18">CC_MSG_SIZE_EXCEEDED_NUM_OF_ANS_DROPPED</measType>
+			<measType p="19">CC_IN_REQ_LOOP_DETECTED</measType>
+			<measType p="20">CC_IN_REQ_HX_BD_INITIALIZE</measType>
+			<measType p="21">CC_IN_REQ_HX_BD_BINDING</measType>
+			<measType p="22">CC_IN_ANS_NUM_OF_MSGS_REDIRECT_IND</measType>
+			<measType p="23">CC_IN_REQ_REJECTED_HIGH</measType>
+			<measType p="24">CC_OUT_ANS_HX_BD_VERIFY_SUCC</measType>
+			<measType p="25">CC_IN_REQ_TAGGED_HIGH</measType>
+			<measType p="26">GC_PEER_MAX_RTT</measType>
+			<measType p="27">CC_MSG_SIZE_EXCEEDED_NUM_OF_REQ_REJECTED</measType>
+			<measType p="28">CC_OUT_ANS_HX_BD_BINDING_UNSUCC</measType>
+			<measType p="29">CC_IN_REQ_HX_ERROR</measType>
+			<measType p="30">CC_IN_REQ_NUM_OF_MSGS_RECEIVED</measType>
+			<measType p="31">CC_IN_ANS_HX_BD_VERIFY_UNSUCC</measType>
+			<measType p="32">CC_IN_REQ_TAGGED_MEDIUM</measType>
+			<measType p="33">CC_OUT_ANS_HX_BD_INITIALIZE_UNSUCC</measType>
+			<measType p="34">CC_IN_REQ_THROTTLING_REJECTED</measType>
+			<measType p="35">CC_OUT_REQ_REJECTED_HIGH</measType>
+			<measType p="36">CC_OUT_REQ_UNABLE_TO_DELIVER</measType>
+			<measType p="37">CC_IN_REQ_NUM_OF_RETRANSMISSIONS</measType>
+			<measType p="38">CC_IN_REQ_INVALID_AVP_BITS</measType>
+			<measType p="39">CC_OUT_REQ_TAGGED_MEDIUM</measType>
+			<measType p="40">CC_IN_ANS_HX_BD_BINDING_SUCC</measType>
+			<measType p="41">CC_IN_REQ_COMMAND_UNSUPPORTED</measType>
+			<measType p="42">CC_OUT_ANS_HX_BD_TERMINATE_SUCC</measType>
+			<measType p="43">CC_IN_ANS_INVALID_REDIRECT_MSGS</measType>
+			<measType p="44">CC_OUT_REQ_HX_BD_BINDING</measType>
+			<measType p="45">CC_IN_ANS_HX_BD_TERMINATE_UNSUCC</measType>
+			<measType p="46">CC_OUT_ANS_HX_TR</measType>
+			<measType p="47">CC_IN_REQ_HX_TR</measType>
+			<measType p="48">CC_IN_ANS_INVALID_MSGS</measType>
+			<measType p="49">CC_OUT_REQ_REJECTED_MEDIUM</measType>
+			<measType p="50">CC_OUT_REQ_NUM_OF_TRANSACTIONS_TIMED_OUT</measType>
+			<measType p="51">CC_OUT_ANS_NUM_OF_MSGS_EBIT_SET</measType>
+			<measType p="52">CC_IN_ANS_HX_BD_INITIALIZE_UNSUCC</measType>
+			<measType p="53">CC_OUT_ANS_HX_BD_VERIFY_UNSUCC</measType>
+			<measType p="54">CC_IN_REQ_TAGGED_LOW</measType>
+			<measType p="55">CC_OUT_REQ_HX_BD_TERMINATE</measType>
+			<measType p="56">GC_NUM_OF_UNANSWERED_TRANSACTIONS</measType>
+			<measType p="57">CC_IN_REQ_FAILED_AVP_READ</measType>
+			<measType p="58">CC_OUT_ANS_UNABLE_TO_DELIVER</measType>
+			<measType p="59">CC_IN_ANS_HX_BD_BINDING_UNSUCC</measType>
+			<measType p="60">CC_OUT_ANS_TOO_BUSY</measType>
+			<measType p="61">CC_IN_REQ_APPLICATION_UNSUPPORTED</measType>
+			<measType p="62">CC_OUT_REQ_LOOP_PREVENTED</measType>
+			<measType p="63">CC_OUT_REQ_HX_TR</measType>
+			<measType p="64">CC_IN_ANS_NUM_OF_MSGS_RECEIVED</measType>
+			<measType p="65">CC_IN_REQ_REJECTED_LOW</measType>
+			<measType p="66">CC_OUT_ANS_HX_BD_BINDING_SUCC</measType>
+			<measType p="67">CC_OUT_ANS_HX_BD_INITIALIZE_SUCC</measType>
+			<measType p="68">CC_OUT_REQ_HX</measType>
+			<measType p="69">CC_ROUTING_MSG_DROPPED</measType>
+			<measType p="70">CC_OUT_REQ_THROTTLING_REJECTED</measType>
+			<measType p="71">CC_OUT_REQ_TOO_BUSY</measType>
+			<measType p="72">CC_OUT_REQ_TAGGED_LOW</measType>
+			<measType p="73">CC_IN_ANS_HX_BD_INITIALIZE_SUCC</measType>
+			<measType p="74">CC_IN_ANS_HX_TR</measType>
+			<measType p="75">CC_IN_REQ_MISSING_AVP</measType>
+			<measType p="76">CC_OUT_REQ_NUM_OF_MSGS_SENT</measType>
+			<measType p="77">CC_OUT_REQ_NUM_OF_TRANSACTIONS_REJECTED</measType>
+			<measType p="78">CC_IN_REQ_HX_BD_VERIFY</measType>
+			<measType p="79">CC_OUT_ANS_HX_ERROR</measType>
+			<measType p="80">CC_OUT_ANS_NUM_OF_MSGS_SENT</measType>
+			<measType p="81">CC_IN_REQ_REJECTED_MEDIUM</measType>
+			<measType p="82">CC_IN_ANS_HBH_ID_NOT_MATCHED</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscAdjacentRealms=1,DscAdjacentRealm=providerA,DscRemotePeers=1,DscRemotePeer=dscclient01">
+				<r p="1">81</r>
+				<r p="2">15</r>
+				<r p="3">25</r>
+				<r p="4">97</r>
+				<r p="5">54</r>
+				<r p="6">37</r>
+				<r p="7">66</r>
+				<r p="8">43</r>
+				<r p="9">61</r>
+				<r p="10">32</r>
+				<r p="11">41</r>
+				<r p="12">24</r>
+				<r p="13">36</r>
+				<r p="14">63</r>
+				<r p="15">78</r>
+				<r p="16">20</r>
+				<r p="17">30</r>
+				<r p="18">55</r>
+				<r p="19">41</r>
+				<r p="20">94</r>
+				<r p="21">66</r>
+				<r p="22">34</r>
+				<r p="23">20</r>
+				<r p="24">50</r>
+				<r p="25">39</r>
+				<r p="26">62</r>
+				<r p="27">63</r>
+				<r p="28">60</r>
+				<r p="29">34</r>
+				<r p="30">0</r>
+				<r p="31">3</r>
+				<r p="32">30</r>
+				<r p="33">3</r>
+				<r p="34">52</r>
+				<r p="35">94</r>
+				<r p="36">98</r>
+				<r p="37">86</r>
+				<r p="38">53</r>
+				<r p="39">69</r>
+				<r p="40">51</r>
+				<r p="41">31</r>
+				<r p="42">51</r>
+				<r p="43">28</r>
+				<r p="44">62</r>
+				<r p="45">74</r>
+				<r p="46">67</r>
+				<r p="47">58</r>
+				<r p="48">79</r>
+				<r p="49">73</r>
+				<r p="50">98</r>
+				<r p="51">68</r>
+				<r p="52">40</r>
+				<r p="53">81</r>
+				<r p="54">97</r>
+				<r p="55">54</r>
+				<r p="56">28</r>
+				<r p="57">49</r>
+				<r p="58">86</r>
+				<r p="59">82</r>
+				<r p="60">54</r>
+				<r p="61">10</r>
+				<r p="62">36</r>
+				<r p="63">2</r>
+				<r p="64">31</r>
+				<r p="65">67</r>
+				<r p="66">59</r>
+				<r p="67">13</r>
+				<r p="68">63</r>
+				<r p="69">55</r>
+				<r p="70">37</r>
+				<r p="71">16</r>
+				<r p="72">2</r>
+				<r p="73">85</r>
+				<r p="74">84</r>
+				<r p="75">84</r>
+				<r p="76">24</r>
+				<r p="77">93</r>
+				<r p="78">24</r>
+				<r p="79">49</r>
+				<r p="80">68</r>
+				<r p="81">41</r>
+				<r p="82">54</r>
+			</measValue>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscAdjacentRealms=1,DscAdjacentRealm=providerB,DscRemotePeers=1,DscRemotePeer=dscserver01">
+				<r p="1">61</r>
+				<r p="2">47</r>
+				<r p="3">89</r>
+				<r p="4">68</r>
+				<r p="5">72</r>
+				<r p="6">87</r>
+				<r p="7">55</r>
+				<r p="8">74</r>
+				<r p="9">59</r>
+				<r p="10">45</r>
+				<r p="11">68</r>
+				<r p="12">95</r>
+				<r p="13">89</r>
+				<r p="14">0</r>
+				<r p="15">3</r>
+				<r p="16">52</r>
+				<r p="17">17</r>
+				<r p="18">42</r>
+				<r p="19">21</r>
+				<r p="20">58</r>
+				<r p="21">93</r>
+				<r p="22">71</r>
+				<r p="23">93</r>
+				<r p="24">0</r>
+				<r p="25">53</r>
+				<r p="26">29</r>
+				<r p="27">44</r>
+				<r p="28">82</r>
+				<r p="29">30</r>
+				<r p="30">20</r>
+				<r p="31">3</r>
+				<r p="32">97</r>
+				<r p="33">95</r>
+				<r p="34">45</r>
+				<r p="35">16</r>
+				<r p="36">63</r>
+				<r p="37">29</r>
+				<r p="38">52</r>
+				<r p="39">55</r>
+				<r p="40">92</r>
+				<r p="41">50</r>
+				<r p="42">46</r>
+				<r p="43">81</r>
+				<r p="44">96</r>
+				<r p="45">16</r>
+				<r p="46">37</r>
+				<r p="47">51</r>
+				<r p="48">32</r>
+				<r p="49">34</r>
+				<r p="50">81</r>
+				<r p="51">78</r>
+				<r p="52">43</r>
+				<r p="53">25</r>
+				<r p="54">88</r>
+				<r p="55">72</r>
+				<r p="56">54</r>
+				<r p="57">3</r>
+				<r p="58">77</r>
+				<r p="59">39</r>
+				<r p="60">71</r>
+				<r p="61">61</r>
+				<r p="62">52</r>
+				<r p="63">26</r>
+				<r p="64">69</r>
+				<r p="65">46</r>
+				<r p="66">32</r>
+				<r p="67">51</r>
+				<r p="68">37</r>
+				<r p="69">90</r>
+				<r p="70">8</r>
+				<r p="71">9</r>
+				<r p="72">26</r>
+				<r p="73">18</r>
+				<r p="74">33</r>
+				<r p="75">45</r>
+				<r p="76">79</r>
+				<r p="77">58</r>
+				<r p="78">25</r>
+				<r p="79">94</r>
+				<r p="80">50</r>
+				<r p="81">52</r>
+				<r p="82">71</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DbsDOT">
+ 			<job jobId="job12"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">VS.DBS.DebugObject.Count</measType>
+			<measType p="2">VS.DBS.DebugObject.TotalSize</measType>
+			<measType p="3">VS.DBS.DebugObject.Size</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DbsDOT=1">
+				<r p="1">65</r>
+				<r p="2">46</r>
+				<r p="3">62</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscDbApp">
+ 			<job jobId="job13"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_DB_WRITE_LATENCY_1_2</measType>
+			<measType p="2">CC_DB_READ_LATENCY_4_8</measType>
+			<measType p="3">CC_DB_WRITE_LATENCY_16_32</measType>
+			<measType p="4">CC_DB_WRITE_LATENCY_05_1</measType>
+			<measType p="5">CC_DB_WRITE_LATENCY_256_INF</measType>
+			<measType p="6">CC_DB_READ_LATENCY_0_05</measType>
+			<measType p="7">CC_DB_WRITE_LATENCY_2_4</measType>
+			<measType p="8">CC_DB_WRITE_LATENCY_64_128</measType>
+			<measType p="9">CC_DB_READ_LATENCY_8_16</measType>
+			<measType p="10">CC_DB_READ_LATENCY_256_INF</measType>
+			<measType p="11">CC_DB_READ_LATENCY_16_32</measType>
+			<measType p="12">CC_DB_READ_LATENCY_64_128</measType>
+			<measType p="13">CC_DB_READ_LATENCY_05_1</measType>
+			<measType p="14">CC_DB_WRITE_LATENCY_32_64</measType>
+			<measType p="15">CC_DB_UNSUCC_TRANSACTION</measType>
+			<measType p="16">CC_DB_WRITE_LATENCY_8_16</measType>
+			<measType p="17">CC_DB_READ_LATENCY_32_64</measType>
+			<measType p="18">CC_DB_READ_LATENCY_1_2</measType>
+			<measType p="19">CC_DB_WRITE_LATENCY_128_256</measType>
+			<measType p="20">CC_DB_WRITE_LATENCY_0_05</measType>
+			<measType p="21">CC_DB_READ_LATENCY_128_256</measType>
+			<measType p="22">GC_DSC_LOAD_DB_APP</measType>
+			<measType p="23">CC_DB_READ_LATENCY_2_4</measType>
+			<measType p="24">CC_DB_WRITE_LATENCY_4_8</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DscDbApp=1">
+				<r p="1">44</r>
+				<r p="2">75</r>
+				<r p="3">62</r>
+				<r p="4">51</r>
+				<r p="5">11</r>
+				<r p="6">27</r>
+				<r p="7">87</r>
+				<r p="8">18</r>
+				<r p="9">75</r>
+				<r p="10">24</r>
+				<r p="11">56</r>
+				<r p="12">57</r>
+				<r p="13">42</r>
+				<r p="14">68</r>
+				<r p="15">69</r>
+				<r p="16">20</r>
+				<r p="17">17</r>
+				<r p="18">43</r>
+				<r p="19">75</r>
+				<r p="20">65</r>
+				<r p="21">15</r>
+				<r p="22">59</r>
+				<r p="23">95</r>
+				<r p="24">66</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscDmiFcSelector">
+ 			<job jobId="job14"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">GC_DMI_FC_ANS_SEL_IND</measType>
+			<measType p="2">GC_DMI_FC_REQ_SEL_IND</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscFlexCounterProfile=1,DscDmiFcSelector=1,DscDmiFcSelector=1">
+				<r p="1">66</r>
+				<r p="2">19</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DbsRPCT">
+ 			<job jobId="job15"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">VS.DBS.RPC.Retried</measType>
+			<measType p="2">VS.DBS.RPC.Failed</measType>
+			<measType p="3">VS.DBS.RPC.UserAborted</measType>
+			<measType p="4">VS.DBS.RPC</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DbsRPCT=1">
+				<r p="1">6</r>
+				<r p="2">0</r>
+				<r p="3">40</r>
+				<r p="4">5</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="OSProcessingLogicalUnit">
+ 			<job jobId="job16"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CPULoad.IOWait</measType>
+			<measType p="2">CPULoad.IRQ</measType>
+			<measType p="3">CPULoad.Nice</measType>
+			<measType p="4">CPULoad.SoftIRQ</measType>
+			<measType p="5">CPULoad.Steal</measType>
+			<measType p="6">CPULoad.System</measType>
+			<measType p="7">CPULoad.Total</measType>
+			<measType p="8">CPULoad.TotalVirt</measType>
+			<measType p="9">CPULoad.User</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,OsProcessingLogicalUnit=1">
+				<r p="1">49</r>
+				<r p="2">95</r>
+				<r p="3">39</r>
+				<r p="4">12</r>
+				<r p="5">5</r>
+				<r p="6">96</r>
+				<r p="7">8</r>
+				<r p="8">82</r>
+				<r p="9">94</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscMsgCopyingProfile">
+ 			<job jobId="job17"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_DMI_MC_NUM_OF_ANS_CONSUMED</measType>
+			<measType p="2">CC_DMI_MC_NUM_OF_REQ_GENERATED</measType>
+			<measType p="3">CC_DMI_MC_INVOKED</measType>
+			<measType p="4">CC_DMI_MC_ABORTED</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscMsgCopyingProfile=1,DscMsgCopyingProfile=1">
+				<r p="1">73</r>
+				<r p="2">41</r>
+				<r p="3">30</r>
+				<r p="4">2</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscUsfw">
+ 			<job jobId="job18"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_USFW_TIME_DISTANCE_CHECK_INVOKED</measType>
+			<measType p="2">CC_USFW_TIME_DISTANCE_CHECK_NOT_PERFORMED</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DscUsfw=1">
+				<r p="1">45</r>
+				<r p="2">47</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DbsPOT">
+ 			<job jobId="job19"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">VS.DBS.PotInst.RegisterClassSubscription</measType>
+			<measType p="2">VS.DBS.PotInst.OpenDirtyRead.ByKey</measType>
+			<measType p="3">VS.DBS.PotInst.Create.Commit</measType>
+			<measType p="4">VS.DBS.PotInst.IteratorCreate</measType>
+			<measType p="5">VS.DBS.PotInst.RecordEntry.Delete</measType>
+			<measType p="6">VS.DBS.PotInst.Update.Commit</measType>
+			<measType p="7">VS.DBS.DirtyCache.DbsPOT.CacheSize</measType>
+			<measType p="8">VS.DBS.PotInst.RecordEntry.Create</measType>
+			<measType p="9">VS.DBS.PotInst.IteratorParticipantCreate</measType>
+			<measType p="10">VS.DBS.PotInst.OpenSafeRead.ByDid</measType>
+			<measType p="11">VS.DBS.PotInst.OpenDirtyRead.ByDid</measType>
+			<measType p="12">VS.DBS.PotInst.OpenUpdate.ByDid</measType>
+			<measType p="13">VS.DBS.PotInst.Lifetime.OverdueFire</measType>
+			<measType p="14">VS.DBS.PotInst.LazyCacheHits</measType>
+			<measType p="15">VS.DBS.PotInst.Lifetime.Set</measType>
+			<measType p="16">VS.DBS.PotInst.Image.Create</measType>
+			<measType p="17">VS.DBS.PotInst.Lifetime.Delete</measType>
+			<measType p="18">VS.DBS.PotInst.Image.Mem.Used</measType>
+			<measType p="19">VS.DBS.PotInst.Delete.Commit</measType>
+			<measType p="20">VS.DBS.DirtyCache.DbsPOT.AddedToCache</measType>
+			<measType p="21">VS.DBS.PotInst.RegisterSubscription</measType>
+			<measType p="22">VS.DBS.PotInst.Lifetime.ExpirationFire</measType>
+			<measType p="23">VS.DBS.PotInst.DeRegisterSubscription</measType>
+			<measType p="24">VS.DBS.PotInst.IteratorNext</measType>
+			<measType p="25">VS.DBS.PotInst.UpgradeLock</measType>
+			<measType p="26">VS.DBS.PotInst.RecordEntry.Count</measType>
+			<measType p="27">VS.DBS.PotInst.Image.Delete</measType>
+			<measType p="28">VS.DBS.PotInst.OpenUpdate.ByKey</measType>
+			<measType p="29">VS.DBS.PotInst.Lifetime.ExpiredInstances</measType>
+			<measType p="30">VS.DBS.PotInst.OpenSafeRead.ByKey</measType>
+			<measType p="31">VS.DBS.PotInst.DeRegisterClassSubscription</measType>
+			<measType p="32">VS.DBS.PotInst.Image.Count</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DbsPOT=1">
+				<r p="1">80</r>
+				<r p="2">75</r>
+				<r p="3">21</r>
+				<r p="4">76</r>
+				<r p="5">83</r>
+				<r p="6">56</r>
+				<r p="7">82</r>
+				<r p="8">40</r>
+				<r p="9">30</r>
+				<r p="10">25</r>
+				<r p="11">53</r>
+				<r p="12">32</r>
+				<r p="13">2</r>
+				<r p="14">68</r>
+				<r p="15">58</r>
+				<r p="16">60</r>
+				<r p="17">66</r>
+				<r p="18">85</r>
+				<r p="19">94</r>
+				<r p="20">31</r>
+				<r p="21">84</r>
+				<r p="22">50</r>
+				<r p="23">94</r>
+				<r p="24">95</r>
+				<r p="25">28</r>
+				<r p="26">51</r>
+				<r p="27">84</r>
+				<r p="28">13</r>
+				<r p="29">90</r>
+				<r p="30">34</r>
+				<r p="31">16</r>
+				<r p="32">75</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscBlade">
+ 			<job jobId="job20"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">GC_BLADE_LOAD_CPU</measType>
+			<measType p="2">GC_AUTH_LOG_ENTRY_LIFESPAN</measType>
+			<measType p="3">CC_INTERNAL_OUTGOING_MSGS</measType>
+			<measType p="4">GC_KERNEL_LOG_ENTRY_LIFESPAN</measType>
+			<measType p="5">GC_MESSAGES_LOG_ENTRY_LIFESPAN</measType>
+			<measType p="6">GC_BLADE_LOAD</measType>
+			<measType p="7">GC_BLADE_LOAD_DB</measType>
+			<measType p="8">CC_INTERNAL_INCOMING_MSGS</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscBlade=PL-3">
+				<r p="1">7</r>
+				<r p="2">38</r>
+				<r p="3">74</r>
+				<r p="4">81</r>
+				<r p="5">0</r>
+				<r p="6">50</r>
+				<r p="7">35</r>
+				<r p="8">22</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="OSProcessingUnit">
+ 			<job jobId="job21"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CPULoad.IOWait</measType>
+			<measType p="2">CPULoad.IRQ</measType>
+			<measType p="3">CPULoad.Nice</measType>
+			<measType p="4">CPULoad.SoftIRQ</measType>
+			<measType p="5">CPULoad.Steal</measType>
+			<measType p="6">CPULoad.System</measType>
+			<measType p="7">CPULoad.Total</measType>
+			<measType p="8">CPULoad.TotalVirt</measType>
+			<measType p="9">CPULoad.User</measType>
+			<measType p="10">Disk.Free</measType>
+			<measType p="11">Disk.PercentFree</measType>
+			<measType p="12">Disk.PercentUsed</measType>
+			<measType p="13">Disk.Used</measType>
+			<measType p="14">Mem.Free</measType>
+			<measType p="15">Mem.PercentFree</measType>
+			<measType p="16">Mem.PercentUsed</measType>
+			<measType p="17">Mem.Total</measType>
+			<measType p="18">Mem.Used</measType>
+			<measType p="19">Swap.Free</measType>
+			<measType p="20">Swap.PercentFree</measType>
+			<measType p="21">Swap.PercentUsed</measType>
+			<measType p="22">Swap.Used</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,OsProcessingUnit=1">
+				<r p="1">6</r>
+				<r p="2">22</r>
+				<r p="3">2</r>
+				<r p="4">46</r>
+				<r p="5">16</r>
+				<r p="6">13</r>
+				<r p="7">99</r>
+				<r p="8">75</r>
+				<r p="9">51</r>
+				<r p="10">81</r>
+				<r p="11">76</r>
+				<r p="12">33</r>
+				<r p="13">55</r>
+				<r p="14">5</r>
+				<r p="15">45</r>
+				<r p="16">85</r>
+				<r p="17">77</r>
+				<r p="18">68</r>
+				<r p="19">16</r>
+				<r p="20">53</r>
+				<r p="21">88</r>
+				<r p="22">24</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="Cai3gUser">
+ 			<job jobId="job22"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_IN_REQ_CAI3G_GET_UNSUCC</measType>
+			<measType p="2">CC_IN_REQ_CAI3G_GET_SUCC</measType>
+			<measType p="3">CC_IN_REQ_CAI3G_DELETE_SUCC</measType>
+			<measType p="4">CC_IN_REQ_CAI3G_SET_SUCC</measType>
+			<measType p="5">CC_IN_REQ_CAI3G_SET_UNSUCC</measType>
+			<measType p="6">CC_IN_REQ_CAI3G_SET_UNSUCC_DB_LIMIT_REACHED</measType>
+			<measType p="7">CC_IN_REQ_CAI3G_DELETE_UNSUCC</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,Cai3gSrv=1,Cai3gUser=1">
+				<r p="1">21</r>
+				<r p="2">57</r>
+				<r p="3">85</r>
+				<r p="4">76</r>
+				<r p="5">25</r>
+				<r p="6">38</r>
+				<r p="7">97</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="Cai3gSrv">
+ 			<job jobId="job23"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_IN_REQ_CAI3G</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,Cai3gSrv=1">
+				<r p="1">61</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DbsDPT">
+ 			<job jobId="job24"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">VS.DBS.DebugPooledObject.Size</measType>
+			<measType p="2">VS.DBS.DebugPooledObject.TotalSize</measType>
+			<measType p="3">VS.DBS.DebugPooledObject.Count</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DbsDPT=1">
+				<r p="1">64</r>
+				<r p="2">92</r>
+				<r p="3">32</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DbsFRT">
+ 			<job jobId="job25"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">VS.DBS.FailReason</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DbsFRT=1">
+				<r p="1">74</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscEventProfile">
+ 			<job jobId="job26"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_DMI_EV_NUM_OF_REQ_RCVD</measType>
+			<measType p="2">CC_DMI_EV_NUM_OF_EVENTS_REPORTED</measType>
+			<measType p="3">CC_DMI_EV_NUM_OF_EXPRESSION_MATCHES</measType>
+			<measType p="4">CC_DMI_EV_NUM_OF_ANS_RCVD</measType>
+			<measType p="5">CC_DMI_EV_ANS_FAILED_AVP_READ</measType>
+			<measType p="6">CC_DMI_EV_REQ_FAILED_AVP_READ</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscEventProfile=1,DscEventProfile=1">
+				<r p="1">97</r>
+				<r p="2">90</r>
+				<r p="3">66</r>
+				<r p="4">4</r>
+				<r p="5">44</r>
+				<r p="6">69</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscHostProxyProfile">
+ 			<job jobId="job27"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_DMI_HP_INVOKED</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscDmiOperations=1,DscHostProxyProfiles=1,DscHostProxyProfile=1">
+				<r p="1">6</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DbsPU">
+ 			<job jobId="job28"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">Mem.RecordHeap.Free</measType>
+			<measType p="2">Trans.Object.Count</measType>
+			<measType p="3">VS.DBS.Mem.RecordHeap.PUsed</measType>
+			<measType p="4">Mem.RecordHeap.PUsed</measType>
+			<measType p="5">VS.DBS.Trans.Object.Create</measType>
+			<measType p="6">Trans.Commit.Count</measType>
+			<measType p="7">VS.DBS.Mem.NormalHeap.Used</measType>
+			<measType p="8">VS.DBS.Trans.Object.Delete</measType>
+			<measType p="9">Mem.TotalHeap.Used</measType>
+			<measType p="10">Trans.Object.Create</measType>
+			<measType p="11">Mem.RecordHeap.Used</measType>
+			<measType p="12">VS.DBS.Mem.RecordHeap.Free</measType>
+			<measType p="13">Mem.NormalHeap.Free</measType>
+			<measType p="14">VS.DBS.Trans.Commit.Count</measType>
+			<measType p="15">Mem.TotalHeap.Free</measType>
+			<measType p="16">VS.DBS.NR.Backlog.Size</measType>
+			<measType p="17">Trans.Object.Delete</measType>
+			<measType p="18">VS.DBS.Trans.Retry.Count</measType>
+			<measType p="19">VS.DBS.Trans.Rollback.Count</measType>
+			<measType p="20">Trans.Retry.Count</measType>
+			<measType p="21">VS.DBS.Trans.Object.Count</measType>
+			<measType p="22">VS.DBS.Mem.TotalHeap.Used</measType>
+			<measType p="23">VS.DBS.Mem.TotalHeap.Free</measType>
+			<measType p="24">Trans.Rollback.Count</measType>
+			<measType p="25">VS.DBS.Mem.RecordHeap.Used</measType>
+			<measType p="26">PotInst.Image.Count</measType>
+			<measType p="27">VS.DBS.Mem.NormalHeap.Free</measType>
+			<measType p="28">PotInst.RecordEntry.Count</measType>
+			<measType p="29">Mem.NormalHeap.Used</measType>
+			<measType p="30">PotInst.Create.Commit</measType>
+			<measType p="31">PotInst.Delete.Commit</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DbsPU=1">
+				<r p="1">37</r>
+				<r p="2">89</r>
+				<r p="3">21</r>
+				<r p="4">39</r>
+				<r p="5">93</r>
+				<r p="6">12</r>
+				<r p="7">47</r>
+				<r p="8">1</r>
+				<r p="9">86</r>
+				<r p="10">88</r>
+				<r p="11">45</r>
+				<r p="12">91</r>
+				<r p="13">70</r>
+				<r p="14">25</r>
+				<r p="15">96</r>
+				<r p="16">84</r>
+				<r p="17">19</r>
+				<r p="18">78</r>
+				<r p="19">76</r>
+				<r p="20">3</r>
+				<r p="21">5</r>
+				<r p="22">17</r>
+				<r p="23">78</r>
+				<r p="24">30</r>
+				<r p="25">99</r>
+				<r p="26">85</r>
+				<r p="27">35</r>
+				<r p="28">50</r>
+				<r p="29">76</r>
+				<r p="30">50</r>
+				<r p="31">42</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="LookupProfile">
+ 			<job jobId="job29"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_SLF_DESTINATION_UNKNOWN</measType>
+			<measType p="2">CC_SLF_TOO_BUSY</measType>
+			<measType p="3">CC_SLF_SUBSCR_NOT_FOUND</measType>
+			<measType p="4">CC_SLF_LOOKUP_INVOKED</measType>
+			<measType p="5">CC_SLF_LOOKUP_FAILURE</measType>
+			<measType p="6">CC_SLF_IDENTITY_MISSING</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,LookupProfile=1">
+				<r p="1">63</r>
+				<r p="2">19</r>
+				<r p="3">27</r>
+				<r p="4">68</r>
+				<r p="5">16</r>
+				<r p="6">52</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DdbBlade">
+ 			<job jobId="job30"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">GC_BLADE_DDB_STORAGE_UTILIZATION</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DdbBlade=1">
+				<r p="1">65</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DbsNIOMT">
+ 			<job jobId="job31"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">VS.DBS.NetsharedIoMessage.Received.Count</measType>
+			<measType p="2">VS.DBS.NetsharedIoMessage.Sent.Count</measType>
+			<measType p="3">VS.DBS.NetsharedIoMessage.Sent.Bytes</measType>
+			<measType p="4">VS.DBS.NetsharedIoMessage.Received.Bytes</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DbsNIOMT=1">
+				<r p="1">93</r>
+				<r p="2">25</r>
+				<r p="3">78</r>
+				<r p="4">42</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DbsIOMT">
+ 			<job jobId="job32"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">VS.DBS.IoMessage</measType>
+			<measType p="2">VS.DBS.IoMessageSize</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscSlf=1,DbsIOMT=1">
+				<r p="1">34</r>
+				<r p="2">21</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscSessionBindingProfile">
+ 			<job jobId="job33"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_DMI_SB_UNSUCC_TERMINATE</measType>
+			<measType p="2">CC_DMI_SB_SUCC_VERIFY</measType>
+			<measType p="3">CC_DMI_SB_NUM_OF_ANS_DROPPED</measType>
+			<measType p="4">CC_DMI_SB_IMPL_SYNC_UNSUCC_INITIALIZE</measType>
+			<measType p="5">CC_DMI_SB_NUM_OF_BIND_REJECTED_DB_LIMIT_REACHED</measType>
+			<measType p="6">CC_DMI_SB_TERMINATE_NO_SESSION</measType>
+			<measType p="7">CC_DMI_SB_NUM_OF_REQ_REJECTED</measType>
+			<measType p="8">CC_DMI_SB_SUCC_BINDING</measType>
+			<measType p="9">CC_DMI_SB_UNSUCC_VERIFY</measType>
+			<measType p="10">CC_DMI_SB_SUCC_TERMINATE</measType>
+			<measType p="11">CC_DMI_SB_IMPL_SYNC_SUCC_INITIALIZE</measType>
+			<measType p="12">CC_DMI_SB_UNSUCC_BINDING</measType>
+			<measType p="13">CC_DMI_SB_UNSUCC_INITIALIZE</measType>
+			<measType p="14">CC_DMI_SB_VERIFY_NO_SESSION</measType>
+			<measType p="15">CC_DMI_SB_NUM_OF_INIT_REJECTED_DB_LIMIT_REACHED</measType>
+			<measType p="16">CC_DMI_SB_NUM_OF_ANS_NOT_RCVD</measType>
+			<measType p="17">CC_DMI_SB_IMPL_SYNC_SUCC_BINDING</measType>
+			<measType p="18">CC_DMI_SB_NUM_OF_REQ_NO_BIND_KEY</measType>
+			<measType p="19">CC_DMI_SB_IMPL_SYNC_UNSUCC_BINDING</measType>
+			<measType p="20">CC_DMI_SB_SUCC_INITIALIZE</measType>
+			<measType p="21">CC_DMI_SB_NUM_OF_REQ_DROPPED</measType>
+			<measType p="22">CC_DMI_SB_REQ_FAILED_AVP_READ</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscDmiOperations=1,DscSessionBinding=1,DscSessionBindingProfiles=1,DscSessionBindingProfile=GxGx-Imsi-GxRx-IPv4">
+				<r p="1">3</r>
+				<r p="2">6</r>
+				<r p="3">66</r>
+				<r p="4">61</r>
+				<r p="5">26</r>
+				<r p="6">31</r>
+				<r p="7">4</r>
+				<r p="8">10</r>
+				<r p="9">25</r>
+				<r p="10">2</r>
+				<r p="11">6</r>
+				<r p="12">9</r>
+				<r p="13">59</r>
+				<r p="14">52</r>
+				<r p="15">94</r>
+				<r p="16">40</r>
+				<r p="17">61</r>
+				<r p="18">25</r>
+				<r p="19">21</r>
+				<r p="20">1</r>
+				<r p="21">84</r>
+				<r p="22">74</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<measData>
+		<managedElement localDn="ManagedElement=DSC01"/>
+<measInfo measInfoId="DscRoamingPartner">
+ 			<job jobId="job34"/>
+			<granPeriod duration="PT900S" endTime="2019-03-21T10:30:00Z"/>
+			<repPeriod duration="PT900S"/>
+			<measType p="1">CC_OUT_REQ_ROAMING_PARTNER</measType>
+			<measType p="2">CC_IN_REQ_ROAMING_PARTNER</measType>
+			<measType p="3">CC_IN_ANS_ROAMING_PARTNER</measType>
+			<measType p="4">CC_IN_REQ_ROAMING_PARTNER_ID_CHECKS_REJECTED</measType>
+			<measType p="5">CC_IN_REQ_ROAMING_PARTNER_CHECKS_OK</measType>
+			<measType p="6">CC_OUT_ANS_ROAMING_PARTNER</measType>
+			<measType p="7">CC_OUT_REQ_ROAMING_PARTNER_ID_CHECKS_REJECTED</measType>
+			<measValue measObjLdn="DscFunction=1,DscNodes=1,DscNode=1,DscRoamingRelations=1,DscRoamingPartner=1">
+				<r p="1">11</r>
+				<r p="2">75</r>
+				<r p="3">63</r>
+				<r p="4">47</r>
+				<r p="5">93</r>
+				<r p="6">47</r>
+				<r p="7">80</r>
+			</measValue>
+		</measInfo>
+	</measData>
+	<fileFooter>
+		<measCollec endTime="2019-03-21T10:30:00Z"/>
+	</fileFooter>
+</measCollecFile>

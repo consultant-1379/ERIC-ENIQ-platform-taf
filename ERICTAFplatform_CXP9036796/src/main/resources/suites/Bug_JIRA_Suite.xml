@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Bug JIRA Suit" parallel="none">
+	<test name="BugJiraTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.BugJiraTest" />
+		</classes>
+	</test>
+	<test name="MonitorHeapScriptTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.MonitorHeapScriptTest" />
+		</classes>
+	</test>
+	<test name="BugJiraEQEV60256">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.BugJiraEQEV60256" />
+		</classes>
+	</test>
+	<test name="BugJiraEQEV61132">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.BugJiraEQEV61132" />
+		</classes>
+	</test>
+	<test name="BugJiraEQEV66467_TC02">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.BugJiraEQEV66467_TC02" />
+		</classes>
+	</test>
+	<test name="BugJiraEQEV57943">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.BugJiraEQEV57943" />
+		</classes>
+	</test>
+	<test name="WebserverRestartTest">
+		<classes>
+			<class
+				name="com.ericsson.eniq.taf.installation.test.cases.bugs.WebserverRestartTest" />
+		</classes>
+	</test>
+</suite>

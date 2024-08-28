@@ -1,0 +1,5 @@
+testCaseId,schedulerLogs
+EQEV-51274_scheduler_module_04,error
+EQEV-51274_scheduler_module_04,schedulerHeap
+EQEV-51274_scheduler_module_04,start_scheduler
+EQEV-51274_scheduler_module_04,stop_scheduler

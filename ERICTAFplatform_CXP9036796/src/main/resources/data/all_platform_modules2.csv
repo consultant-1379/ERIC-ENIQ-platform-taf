@@ -1,0 +1,23 @@
+testCaseId,moduleNo,platform_modules
+EQEV-50436-Port Install Scripts_03,1,runtime
+EQEV-50436-Port Install Scripts_03,2,installer
+EQEV-50436-Port Install Scripts_03,3,libs
+EQEV-50436-Port Install Scripts_03,4,eniq_config
+EQEV-50436-Port Install Scripts_03,5,repository
+EQEV-50436-Port Install Scripts_03,6,common
+EQEV-50436-Port Install Scripts_03,8,licensing
+EQEV-50436-Port Install Scripts_03,9,engine
+EQEV-50436-Port Install Scripts_03,10,scheduler
+EQEV-50436-Port Install Scripts_03,11,monitoring
+EQEV-50436-Port Install Scripts_03,12,export
+EQEV-50436-Port Install Scripts_03,13,dwhmanager
+EQEV-50436-Port Install Scripts_03,14,AdminUI
+EQEV-50436-Port Install Scripts_03,15,BusyHour
+EQEV-50436-Port Install Scripts_03,16,alarm
+EQEV-50436-Port Install Scripts_03,17,alarmcfg
+EQEV-50436-Port Install Scripts_03,18,diskmanager
+EQEV-50436-Port Install Scripts_03,19,ebsmanager
+EQEV-50436-Port Install Scripts_03,20,helpset_stats
+EQEV-50436-Port Install Scripts_03,21,statlibs
+EQEV-50436-Port Install Scripts_03,22,symboliclinkcreator
+EQEV-50436-Port Install Scripts_03,23,uncompress

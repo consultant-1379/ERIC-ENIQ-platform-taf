@@ -1,0 +1,1 @@
+select TOP 1 ENDTIME from DWHPARTITION where storageid like '%DC_Z_ALARM_INFO%' order by starttime DESC

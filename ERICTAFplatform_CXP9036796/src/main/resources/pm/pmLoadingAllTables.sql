@@ -1,0 +1,1 @@
+select BASETABLENAME from MeasurementTable where BASETABLENAME like 'DC%'

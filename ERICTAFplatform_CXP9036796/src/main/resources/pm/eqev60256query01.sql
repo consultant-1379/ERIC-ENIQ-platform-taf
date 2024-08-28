@@ -1,0 +1,1 @@
+select * from DC_E_IPTRANSPORT_G826_RAW where BB = 30 and BBE = null and BBER = null and ES = 35 and ESR = 40 and SES = 45 and SESR = 50 and UAS = null order by convert(datetime, DATETIME_ID) DESC 

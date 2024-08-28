@@ -1,0 +1,1 @@
+UPDATE TOP 1  DWHPARTITION SET ENDTIME = '${currentdate}' WHERE storageid like '%DC_Z_ALARM_INFO%' ORDER BY starttime DESC;select * from DWHPARTITION where storageid like '%DC_Z_ALARM_INFO%' order by starttime

@@ -1,0 +1,1 @@
+SELECT START_DATE from META_TRANSFER_BATCHES  where start_date < (getdate()- 65)

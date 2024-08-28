@@ -1,0 +1,10 @@
+testCaseId,No,service
+EQEV-50468_processmangement_1,1,eniq-connectd
+EQEV-50468_processmangement_1,3,eniq-dwhdb
+EQEV-50468_processmangement_1,4,eniq-engine
+EQEV-50468_processmangement_1,5,eniq-esm
+EQEV-50468_processmangement_1,6,eniq-licmgr
+EQEV-50468_processmangement_1,7,eniq-lwphelper
+EQEV-50468_processmangement_1,8,eniq-repdb
+EQEV-50468_processmangement_1,9,eniq-scheduler
+EQEV-50468_processmangement_1,10,eniq-webserver

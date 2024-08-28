@@ -1,0 +1,1 @@
+select dataname, typeid from MeasurementCounter where dataid like '%${key}' and (typeid like '%DC[_]E[_]ERBS[_]%' or typeid like '%DC[_]E[_]CPP[_]%')

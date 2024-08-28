@@ -1,0 +1,20 @@
+testCaseId,moduleNo,platform_modules
+EQEV-50436-Port Install Scripts_04,1,libs
+EQEV-50436-Port Install Scripts_04,2,repository
+EQEV-50436-Port Install Scripts_04,3,common
+EQEV-50436-Port Install Scripts_04,4,licensing
+EQEV-50436-Port Install Scripts_04,5,engine
+EQEV-50436-Port Install Scripts_04,6,scheduler
+EQEV-50436-Port Install Scripts_04,7,monitoring
+EQEV-50436-Port Install Scripts_04,8,export
+EQEV-50436-Port Install Scripts_04,9,dwhmanager
+EQEV-50436-Port Install Scripts_04,10,AdminUI
+EQEV-50436-Port Install Scripts_04,11,BusyHour
+EQEV-50436-Port Install Scripts_04,12,alarm
+EQEV-50436-Port Install Scripts_04,13,alarmcfg
+EQEV-50436-Port Install Scripts_04,14,diskmanager
+EQEV-50436-Port Install Scripts_04,15,ebsmanager
+EQEV-50436-Port Install Scripts_04,16,helpset_stats
+EQEV-50436-Port Install Scripts_04,17,statlibs
+EQEV-50436-Port Install Scripts_04,18,symboliclinkcreator
+EQEV-50436-Port Install Scripts_04,19,uncompress
